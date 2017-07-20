@@ -7,8 +7,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -17,7 +17,7 @@ import android.view.WindowManager;
  */
 
 public class UsefulThings {
-    public static void configureWindow(AppCompatActivity app, View root) {
+    public static void configureWindow(FragmentActivity app, View root) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
