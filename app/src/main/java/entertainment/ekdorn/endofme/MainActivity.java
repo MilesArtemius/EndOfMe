@@ -2,16 +2,21 @@ package entertainment.ekdorn.endofme;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import entertainment.ekdorn.endofme.Helpfuls.UsefulThings;
+
 public class MainActivity extends AppCompatActivity {
+    StoryReader reader;
+
     TextView console;
     RelativeLayout rootLayout;
+    FrameLayout fragmentLayout;
 
     private void configureTextView() {
         console = new TextView(this);
@@ -19,15 +24,30 @@ public class MainActivity extends AppCompatActivity {
         console.setTextColor(Color.WHITE);
         console.setTextIsSelectable(false);
         console.setTypeface(null, Typeface.BOLD);
-        console.setText("Sample Text");
         console.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        console.setId(R.id.console);
         rootLayout.addView(console);
     }
 
+    private void configureSubTextView() {
+        fragmentLayout = new FrameLayout(this);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.BELOW, console.getId());
+        params.addRule(RelativeLayout.ALIGN_PARENT_START);
+        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        fragmentLayout.setLayoutParams(params);
+        fragmentLayout.setId(R.id.fragment);
+        rootLayout.addView(fragmentLayout);
+    }
+
     private void configureDialog() {
-        MainDialog md = new MainDialog(this);
-        //md.setMessage("lol");
-        md.show();
+        RetainDialog mainDialog = new RetainDialog(this);
+        mainDialog.getNewGameButton().setOnClickListener(v -> {
+            reader = new StoryReader(rootLayout, MainActivity.this);
+            mainDialog.hide();
+            reader.letTheStoryBegin();
+        });
+        mainDialog.show();
     }
 
     @Override
@@ -42,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
         rootLayout.addView(iv);*/
 
         configureTextView();
+        configureSubTextView();
 
         UsefulThings.configureWindow(this, rootLayout);
-
         setContentView(rootLayout);
 
         configureDialog();

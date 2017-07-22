@@ -1,4 +1,4 @@
-package entertainment.ekdorn.endofme;
+package entertainment.ekdorn.endofme.Helpfuls;
 
 import android.content.Context;
 import android.graphics.Bitmap;
