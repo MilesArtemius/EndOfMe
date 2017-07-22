@@ -44,7 +44,7 @@ public class Story {
 
         for (Map.Entry<String, JsonElement> leaf: source.entrySet()) {
             double thisTreeValue = Integer.parseInt(leaf.getKey());
-            boolean computerSpeech = leaf.getValue().getAsJsonObject().get("computer").getAsBoolean();
+            String computerSpeech = leaf.getValue().getAsJsonObject().get("computer").getAsString();
             String story = leaf.getValue().getAsJsonObject().get("story").getAsString();
             String view = leaf.getValue().getAsJsonObject().get("input").getAsString();
             String indicator = leaf.getValue().getAsJsonObject().get("indicator").getAsString();

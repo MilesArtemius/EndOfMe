@@ -9,7 +9,7 @@ import entertainment.ekdorn.endofme.InputTypes.SampleInputType;
  */
 
 public class  StoryNode {
-    boolean computerSpeech;
+    String computerSpeech;
     String story;
     double thisTreeValue;
     SampleInputType view;
@@ -17,7 +17,7 @@ public class  StoryNode {
     String indicator = "none";
 
 
-    public boolean isComputerSpeech() {
+    public String isComputerSpeech() {
         return computerSpeech;
     }
 
@@ -37,7 +37,7 @@ public class  StoryNode {
         return indicator;
     }
 
-    public StoryNode(boolean computerSpeech, String story, double thisTreeValue, String view, String indicator) {
+    public StoryNode(String computerSpeech, String story, double thisTreeValue, String view, String indicator) {
         this.computerSpeech = computerSpeech;
         this.story = story;
         this.thisTreeValue = thisTreeValue;

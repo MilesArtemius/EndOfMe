@@ -4,7 +4,9 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -46,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
             reader = new StoryReader(rootLayout, MainActivity.this);
             mainDialog.hide();
             reader.letTheStoryBegin();
+        });
+
+
+        mainDialog.getQuickModeCheckBox().setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                mainDialog.getQuickModeCheckBox().setText("Quick mode enabled");
+            } else {
+                mainDialog.getQuickModeCheckBox().setText("Quick mode disabled");
+            }
         });
         mainDialog.show();
     }
