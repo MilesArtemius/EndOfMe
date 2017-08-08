@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private void configureDialog() {
         RetainDialog mainDialog = new RetainDialog(this);
         mainDialog.getNewGameButton().setOnClickListener(v -> {
-            reader = new StoryReader(rootLayout, MainActivity.this);
+            reader = new StoryReader(rootLayout, MainActivity.this, getSupportFragmentManager());
             mainDialog.hide();
             reader.letTheStoryBegin();
         });

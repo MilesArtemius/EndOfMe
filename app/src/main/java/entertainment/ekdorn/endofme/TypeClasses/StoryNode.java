@@ -1,9 +1,5 @@
 package entertainment.ekdorn.endofme.TypeClasses;
 
-import android.view.View;
-
-import entertainment.ekdorn.endofme.InputTypes.SampleInputType;
-
 /**
  * Created by User on 17.07.2017.
  */
@@ -12,7 +8,7 @@ public class  StoryNode {
     String computerSpeech;
     String story;
     double thisTreeValue;
-    SampleInputType view;
+    String view;
 
     String indicator = "none";
 
@@ -29,7 +25,7 @@ public class  StoryNode {
         return thisTreeValue;
     }
 
-    public SampleInputType getView() {
+    public String getView() {
         return view;
     }
 
@@ -41,9 +37,7 @@ public class  StoryNode {
         this.computerSpeech = computerSpeech;
         this.story = story;
         this.thisTreeValue = thisTreeValue;
-
-        this.view = new SampleInputType();
-
+        this.view = view;
         this.indicator = indicator;
     }
 }

@@ -1,16 +1,11 @@
 package entertainment.ekdorn.endofme;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
+import android.support.v4.app.FragmentManager;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import entertainment.ekdorn.endofme.Helpfuls.ConsoleTyper;
 import entertainment.ekdorn.endofme.Helpfuls.Story;
 import entertainment.ekdorn.endofme.TypeClasses.StoryNode;
 
@@ -20,27 +15,35 @@ import entertainment.ekdorn.endofme.TypeClasses.StoryNode;
 
 public class StoryReader {
     RelativeLayout parent;
-    ArrayList<StoryNode> story;
     ConsoleTyper typer;
+    Context context;
 
     TextView console;
 
-    public StoryReader(RelativeLayout root, Context context) {
+    public StoryReader(RelativeLayout root, Context context, FragmentManager manager) {
         this.parent = root;
-        this.story = Story.getInstance(context).getNodes();
+        this.context = context;
 
         this.console = (TextView) root.findViewById(R.id.console);
-        this.typer = new ConsoleTyper(console);
+        this.typer = new ConsoleTyper(console, manager, (FrameLayout) parent.findViewById(R.id.fragment));
     }
 
     public void letTheStoryBegin() {
         console.setText("");
-        for (StoryNode node: story) {
+        for (StoryNode node: Story.getInstance(context).getNodes()) {
             if (false) {
-                typer.writeNowToConsole("test", node.isComputerSpeech(), node.getStory());
+                typer.writeNowToConsole("test", node);
             } else {
-                typer.writeLaterToConsole("test", node.isComputerSpeech(), node.getStory());
+                typer.writeLaterToConsole("test", node);
             }
+        }
+    }
+    public void continueStory(double thisTreeSpotValue) {
+        StoryNode node = Story.getInstance(context).getNodes().get(5);
+        if (false) {
+            typer.writeNowToConsole("test", node);
+        } else {
+            typer.writeLaterToConsole("test", node);
         }
     }
 }
