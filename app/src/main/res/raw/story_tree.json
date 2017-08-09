@@ -1,8 +1,20 @@
 {
-"0": {
-  "computer": "loading",
-  "story": "Initializing processor",
-  "input": "none",
-  "indicator": "none"
-}
+  "0": {
+    "computer": "loading",
+    "story": "Initializing processor",
+    "input": "none",
+    "indicator": "none"
+  },
+  "1": {
+    "computer": "loading",
+    "story": "Initializing processor",
+    "input": {
+      "view": "buttons",
+      "this": "1",
+      "thisa": "1",
+      "thisb": "1",
+      "previous": "0"
+    },
+    "indicator": "none"
+  }
 }
